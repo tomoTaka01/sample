@@ -1,0 +1,7 @@
+To:[[${mailTo}]]
+
+[[#{greeting}]]
+
+[[${body}]]
+
+from [[${#locale.country}]]
