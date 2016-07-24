@@ -6,8 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -25,9 +25,8 @@ public class Sample {
         Locale.setDefault(locale);
         Context context = new Context();
         context.setVariable("mailTo", "Hanako");
-        String body = Arrays.asList("body1", "body2", "body3").stream()
-                .collect(Collectors.joining(System.lineSeparator()));
-        context.setVariable("bodies", body);
+        List<String> bodies = Arrays.asList("body1", "body2", "body3");
+        context.setVariable("bodies", bodies);
         FileTemplateResolver resolver = new FileTemplateResolver();
         resolver.setPrefix("resources/");
         resolver.setTemplateMode(TemplateMode.TEXT);
