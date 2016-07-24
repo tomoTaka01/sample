@@ -3,7 +3,7 @@ To:[[${mailTo}]]
 [[#{greeting}]]
 
 [# th:each="body : ${bodies}"]
-[# th:utext="${body}" /]
+[[${body}]]
 [/]
 
 from [[${#locale.country}]]
