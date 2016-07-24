@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 public class Sample {
@@ -26,9 +27,10 @@ public class Sample {
         context.setVariable("mailTo", "Hanako");
         String body = Arrays.asList("body1", "body2", "body3").stream()
                 .collect(Collectors.joining(System.lineSeparator()));
-        context.setVariable("body", body);
+        context.setVariable("bodies", body);
         FileTemplateResolver resolver = new FileTemplateResolver();
         resolver.setPrefix("resources/");
+        resolver.setTemplateMode(TemplateMode.TEXT);
         TemplateEngine engine = new TemplateEngine();
         engine.addTemplateResolver(resolver);
         Path path = Paths.get(String.format("mail_%s.txt", locale.getLanguage()));
